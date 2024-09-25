@@ -1,0 +1,60 @@
+<html lang="ko">
+<head>
+    <title>회원가입</title>
+    <script type="text/javascript">
+
+        function checkId() {
+            var idval = document.getElementById("userid").value;
+
+            if(idval == "admin" || idval == "admin123" || idval == "admin1234"){
+                return false;
+            }
+            return true;
+        }
+
+        function checkPw() {
+            var pwval = document.getElementById("password").value;
+            var reg = /^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/;
+
+            if (!reg.test(pwval)){
+                return false;
+            }
+            return true;
+        }
+
+        function check() {
+            if(!checkId()){
+                alert("아이디 중복으로 가입 불가");
+            } 
+            
+            if(!checkPw()){
+                alert("비밀번호는 대문자, 숫자, 특수문자를 모두 1개 이상 입력해야합니다.");
+            } 
+
+            if(checkId() && checkPw()){
+                alert("hello");
+            }
+            
+        }
+    </script>
+</head>
+
+<body>
+    <form name="signupForm" id="signupForm" action="" method="post">
+        <table>
+            <tr>
+                <td><h2>회원가입</h2></td>
+            </tr>
+            <tr><td>아이디</td></tr>
+            <tr><td><input type="text" id="userid" value=""></td></tr>
+            <tr><td>비밀번호</td></tr>
+            <tr><td><input type="password" id="password"></td></tr>
+            <tr><td>이름</td></tr>
+            <tr><td><input type="text" id="name"></td></tr>
+            <tr><td>휴대폰 번호</td></tr>
+            <tr><td><input type="text" id="phone"></td></tr>
+            <tr><td><input type="submit" value="회원가입" onclick="check();"></td></tr>
+        </table>
+    </form>
+</body>
+</html>
